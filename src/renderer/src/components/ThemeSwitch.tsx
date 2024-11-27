@@ -1,8 +1,7 @@
+import { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
-import { useLocalStorage } from '@renderer/global/hooks/useLocalStorage';
-
-const CACHE_KEY = 'pa-theme-mode';
+import { ThemeContext } from '@renderer/global/components/ThemeProvider/ThemeProvider';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -61,13 +60,9 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const ThemeSwitch = () => {
-  const { value: mode, set } = useLocalStorage<'dark' | 'light'>(CACHE_KEY, 'dark');
+  const context = useContext(ThemeContext);
 
-  const switchMode = () => {
-    set(mode === 'dark' ? 'light' : 'dark');
-  };
-
-  return <MaterialUISwitch checked={mode === 'dark'} onChange={switchMode} />;
+  return <MaterialUISwitch checked={context?.theme === 'dark'} onChange={context?.toggleTheme} />;
 };
 
 export default ThemeSwitch;

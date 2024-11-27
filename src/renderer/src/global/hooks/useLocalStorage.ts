@@ -8,7 +8,7 @@ export const useLocalStorage = <T>(key: string, defaultValue?: T) => {
       return item ? (JSON.parse(item) as T) : defaultValue;
     } catch {
       console.error('Failed to get item from localStorage');
-      return undefined;
+      return defaultValue;
     }
   });
 
@@ -24,7 +24,6 @@ export const useLocalStorage = <T>(key: string, defaultValue?: T) => {
   const remove = () => {
     try {
       window.localStorage.removeItem(key);
-      setValue(undefined); // Clear the state as well
     } catch {
       console.error('Failed to delete item from localStorage');
     }

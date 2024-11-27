@@ -1,24 +1,21 @@
 import Paper from '@mui/material/Paper/Paper';
-import ThemeProvider, { getTheme } from '@renderer/global/ThemeProvider';
+import ThemeSwitch from '@renderer/components/ThemeSwitch';
+import { useTheme } from '@mui/material/styles';
 
 const App = () => {
-  const theme = getTheme();
+  const theme = useTheme();
 
   return (
-    <ThemeProvider>
-      <Paper
-        elevation={0}
-        style={{
-          backgroundColor: theme.palette.background.paper,
-          height: '100vh',
-          borderRadius: 0
-        }}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus deserunt ipsam,
-        necessitatibus nihil quasi quia velit. Eveniet explicabo in modi neque non obcaecati quod
-        sint. Cupiditate deserunt laboriosam neque ullam.
-      </Paper>
-    </ThemeProvider>
+    <Paper
+      elevation={0}
+      style={{
+        backgroundColor: theme.palette.background.paper,
+        height: '100vh',
+        borderRadius: 0
+      }}
+    >
+      <ThemeSwitch />
+    </Paper>
   );
 };
 
