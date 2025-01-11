@@ -15,6 +15,11 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
-    plugins: [react()]
+    plugins: [react()],
+    css: {
+      modules: {
+        generateScopedName: '[local]_[hash:base64:5]'
+      }
+    }
   }
 });
