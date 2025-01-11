@@ -6,10 +6,10 @@ import icon from '../../resources/icon.png?asset';
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 400,
+    width: 800,
+    height: 600,
     show: false,
-    frame: false,
+    frame: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -18,6 +18,8 @@ function createWindow(): void {
       contextIsolation: true
     }
   });
+
+  mainWindow.maximize();
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
